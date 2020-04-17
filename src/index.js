@@ -101,7 +101,7 @@ export default class RNFadedScrollView extends Component {
                 onLayout={this._onLayout.bind(this)}>
                 <ScrollView
                     {...this.props}
-                    style={[styles.scrollViewStyle, this.props.scrollViewStyle]}
+                    style={[styles.scrollViewStyle, this.props.style]}
                     horizontal={this.props.isHorizontal}
                     onContentSizeChange={this.onContentSizeChange}
                     scrollEventThrottle={16}
