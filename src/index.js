@@ -31,13 +31,13 @@ export default class RNFadedScrollView extends Component {
     }
 
     isEndFadeAllowed() {
-        const sizeToCompare = this.props.isHorizontal ? this.state.scrollWidth : this.state.scrollHeight;
-        const availableSpace = this.props.isHorizontal ? this.state.availableWidth : this.state.availableHeight;
+        const sizeToCompare = this.props.horizontal ? this.state.scrollWidth : this.state.scrollHeight;
+        const availableSpace = this.props.horizontal ? this.state.availableWidth : this.state.availableHeight;
         return this.props.allowEndFade ? sizeToCompare > availableSpace : false;
     }
 
     ifCloseToStart({ layoutMeasurement, contentOffset, contentSize }) {
-        return this.props.isHorizontal ? contentOffset.x < 10 : contentOffset.y < 10;
+        return this.props.horizontal ? contentOffset.x < 10 : contentOffset.y < 10;
     }
     isCloseToBottom({ layoutMeasurement, contentOffset, contentSize }) {
         return layoutMeasurement.height + contentOffset.y >= contentSize.height - 20;
@@ -61,7 +61,7 @@ export default class RNFadedScrollView extends Component {
 
     //get start fade view
     getStartFaade() {
-        return (this.props.isHorizontal ?
+        return (this.props.horizontal ?
             <LinearGradient
                 start={{ x: 1, y: 0 }} end={{ x: 0, y: 0 }}
                 style={{ position: 'absolute', start: 0, width: this.props.fadeSize, height: '100%' }}
@@ -78,7 +78,7 @@ export default class RNFadedScrollView extends Component {
     }
 
     getEndFade() {
-        return (this.props.isHorizontal ?
+        return (this.props.horizontal ?
             <LinearGradient
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
                 style={{ position: 'absolute', end: 0, width: this.props.fadeSize, height: '100%' }}
@@ -97,12 +97,11 @@ export default class RNFadedScrollView extends Component {
     render() {
         const endFadeEnable = this.isEndFadeAllowed();
         return (
-            <View style={[styles.container, { flexDirection: this.props.isHorizontal ? "row" : "column" }]}
+            <View style={[styles.container, { flexDirection: this.props.horizontal ? "row" : "column" }]}
                 onLayout={this._onLayout.bind(this)}>
                 <ScrollView
                     {...this.props}
                     style={[styles.scrollViewStyle, this.props.style]}
-                    horizontal={this.props.isHorizontal}
                     onContentSizeChange={this.onContentSizeChange}
                     scrollEventThrottle={16}
                     onScroll={this.onScrolled}
@@ -128,14 +127,12 @@ const styles = StyleSheet.create({
     }
 });
 RNFadedScrollView.propTypes = {
-    isHorizontal: PropTypes.bool,
     allowStartFade: PropTypes.bool,
     allowEndFade: PropTypes.bool,
     fadeSize: PropTypes.number,
     fadeColors: PropTypes.array,
 }
 RNFadedScrollView.defaultProps = {
-    isHorizontal: false,
     allowStartFade: false,
     allowEndFade: true,
     fadeSize: 20,

@@ -5,5 +5,8 @@ npm-debug.log
 # Dependency directory
 node_modules
 
+#assets for readme
+assets
+
 # Runtime data
 tmp
