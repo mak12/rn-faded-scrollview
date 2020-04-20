@@ -8,7 +8,13 @@ Vertical Scroll             |  Horizontal Scroll
 ## Installation
 This library relies on [react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient). Follow setup instructions of linear gradient.
 
-And now finally Run `npm install rn-faded-scrollview` in your project directory.
+And now finally run in your project directory.
+
+`npm install rn-faded-scrollview` 
+
+OR
+
+`yarn add rn-faded-scrollview` 
 
 ## Documentation
 This library accepts all the props of [ScrollView](https://reactnative.dev/docs/scrollview) and some additional props.

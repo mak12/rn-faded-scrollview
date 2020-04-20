@@ -14,7 +14,8 @@ export default class RNFadedScrollView extends Component {
             scrollWidth: 0,
             availableWidth: 0,
             availableHeight: 0,
-            allowStartFade: false
+            allowStartFade: false,
+            allowEndFade: true
         }
     }
 
@@ -23,6 +24,7 @@ export default class RNFadedScrollView extends Component {
         // Save the content height in state
         this.setState({ scrollHeight: contentHeight, scrollWidth: contentWidth });
     };
+
     _onLayout(event) {
         const containerWidth = event.nativeEvent.layout.width;
         const containerHeight = event.nativeEvent.layout.width;
@@ -40,20 +42,26 @@ export default class RNFadedScrollView extends Component {
         return this.props.horizontal ? contentOffset.x < 10 : contentOffset.y < 10;
     }
     isCloseToBottom({ layoutMeasurement, contentOffset, contentSize }) {
-        return layoutMeasurement.height + contentOffset.y >= contentSize.height - 20;
+        return this.props.horizontal ? layoutMeasurement.width + contentOffset.x >= contentSize.width - 10 : layoutMeasurement.height + contentOffset.y >= contentSize.height - 10;
     }
 
     onScrolled = (e) => {
         if (this.props.allowStartFade) {
             if (this.ifCloseToStart(e.nativeEvent)) {
                 this.setState({ allowStartFade: false })
-
             }
             else {
                 this.setState({ allowStartFade: true })
             }
         }
-
+        if (this.props.allowEndFade) {
+            if (this.isCloseToBottom(e.nativeEvent)) {
+                this.setState({ allowEndFade: false })
+            }
+            else {
+                this.setState({ allowEndFade: true })
+            }
+        }
         if (this.props.onScroll) {
             this.props.onScroll();
         }
@@ -109,12 +117,10 @@ export default class RNFadedScrollView extends Component {
                     {this.props.children}
                 </ScrollView>
                 {(this.state.allowStartFade) && this.getStartFaade()}
-                {endFadeEnable && this.getEndFade()}
+                {(endFadeEnable && this.state.allowEndFade) && this.getEndFade()}
             </View>
         )
     }
-
-
 }
 
 const styles = StyleSheet.create({
