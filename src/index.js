@@ -39,13 +39,19 @@ export default class RNFadedScrollView extends Component {
     }
 
     ifCloseToStart({ layoutMeasurement, contentOffset, contentSize }) {
-        return this.props.horizontal ? contentOffset.x < 10 : contentOffset.y < 10;
+        return this.props.horizontal ? contentOffset.x < this.props.scrollThreshold : contentOffset.y < this.props.scrollThreshold;
     }
     isCloseToBottom({ layoutMeasurement, contentOffset, contentSize }) {
-        return this.props.horizontal ? layoutMeasurement.width + contentOffset.x >= contentSize.width - 10 : layoutMeasurement.height + contentOffset.y >= contentSize.height - 10;
+        return this.props.horizontal ? layoutMeasurement.width + contentOffset.x >= contentSize.width - this.props.scrollThreshold : layoutMeasurement.height + contentOffset.y >= contentSize.height - this.props.scrollThreshold;
     }
 
     onScrolled = (e) => {
+        if (this.props.isCloseToEnd) {
+            this.props.isCloseToEnd(this.isCloseToBottom(e.nativeEvent));
+        }
+        if (this.props.isCloseToStart) {
+            this.props.isCloseToStart(this.ifCloseToStart(e.nativeEvent));
+        }
         if (this.props.allowStartFade) {
             if (this.ifCloseToStart(e.nativeEvent)) {
                 this.setState({ allowStartFade: false })
@@ -96,9 +102,16 @@ export default class RNFadedScrollView extends Component {
             :
             <LinearGradient
                 start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-                style={{ position: 'absolute', bottom: 0, width: '100%', height: 20 }}
+                style={{ position: 'absolute', bottom: 0, width: '100%', height: this.props.fadeSize }}
                 colors={this.props.fadeColors}
                 pointerEvents={'none'}
+            />)
+    }
+    getDivider() {
+        return (this.props.horizontal ? <View
+            style={[{ width: 1, height: '100%', backgroundColor: "#E6E6E6" }, this.props.dividerStyle]}
+        /> : <View
+                style={[{ width: '100%', height: 1, backgroundColor: "#E6E6E6" }, this.props.dividerStyle]}
             />)
     }
 
@@ -107,6 +120,7 @@ export default class RNFadedScrollView extends Component {
         return (
             <View style={[styles.container, { flexDirection: this.props.horizontal ? "row" : "column" }]}
                 onLayout={this._onLayout.bind(this)}>
+                {(this.state.allowStartFade && this.props.allowDivider) && this.getDivider()}
                 <ScrollView
                     {...this.props}
                     style={[styles.scrollViewStyle, this.props.style]}
@@ -116,6 +130,7 @@ export default class RNFadedScrollView extends Component {
                 >
                     {this.props.children}
                 </ScrollView>
+                {((endFadeEnable && this.state.allowEndFade) && this.props.allowDivider) && this.getDivider()}
                 {(this.state.allowStartFade) && this.getStartFaade()}
                 {(endFadeEnable && this.state.allowEndFade) && this.getEndFade()}
             </View>
@@ -137,10 +152,16 @@ RNFadedScrollView.propTypes = {
     allowEndFade: PropTypes.bool,
     fadeSize: PropTypes.number,
     fadeColors: PropTypes.array,
+    isCloseToEnd: PropTypes.func,
+    isCloseToStart: PropTypes.func,
+    scrollThreshold: PropTypes.number,
+    allowDivider: PropTypes.bool
 }
 RNFadedScrollView.defaultProps = {
     allowStartFade: false,
     allowEndFade: true,
     fadeSize: 20,
-    fadeColors: defaultFadeColors
+    fadeColors: defaultFadeColors,
+    scrollThreshold: 10,
+    allowDivider: false
 }

@@ -25,3 +25,11 @@ This library accepts all the props of [ScrollView](https://reactnative.dev/docs/
 | allowEndFade               | Add fade at the end of ScrollView      | true       | Boolean  |
 | fadeSize | Fade size i.e( width incase of horizontal and height incase of vertical ScrollView) | 20     | Number  |
 | fadeColors          | Colors for fade effect        | ['rgba(229, 229, 229, 0.18)', 'rgba(206, 201, 201, 0.6)', 'rgba(206, 201, 201, 0.9)']     | Array  |
+| scrollThreshold          | Threshold to control fade hide/show when it reaches start or end        | 10     | Number  |
+| allowDivider          | Allow divider at fade end.      | false    | Boolean.  |
+
+### Events
+| Name                      | Callback param                              | Description     |
+|---------------------------|------------------------------------------|-------------|
+| isCloseToEnd               | Boolean  | if scroll is close to end or not.           |
+| isCloseToStart               | Boolean      | if scroll is close to start or not.   |
