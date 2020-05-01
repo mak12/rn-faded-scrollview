@@ -27,6 +27,8 @@ This library accepts all the props of [ScrollView](https://reactnative.dev/docs/
 | fadeColors          | Colors for fade effect        | ['rgba(229, 229, 229, 0.18)', 'rgba(206, 201, 201, 0.6)', 'rgba(206, 201, 201, 0.9)']     | Array  |
 | scrollThreshold          | Threshold to control fade hide/show when it reaches start or end        | 10     | Number  |
 | allowDivider          | Allow divider at fade end.      | false    | Boolean.  |
+| isRtl          | For RTL Layouts      | false    | Boolean.  |
+
 
 ### Events
 | Name                      | Callback param                              | Description     |
