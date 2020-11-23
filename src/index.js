@@ -82,13 +82,13 @@ export default class RNFadedScrollView extends Component {
         return (this.props.horizontal ?
             <LinearGradient
                 start={{ x: this.props.isRtl ? 0 : 1, y: 0 }} end={{ x: this.props.isRtl ? 1 : 0, y: 0 }}
-                style={{ position: 'absolute', start: 0, width: this.props.fadeSize, height: '100%' }}
+                style={[{ position: 'absolute', start: 0, width: this.props.fadeSize, height: '100%' }, this.props.startFadeStyle]}
                 colors={this.props.fadeColors}
                 pointerEvents={'none'}
             /> :
             <LinearGradient
                 start={{ x: 0, y: 1 }} end={{ x: 0, y: 0 }}
-                style={{ position: 'absolute', top: 0, width: '100%', height: this.props.fadeSize }}
+                style={[{ position: 'absolute', top: 0, width: '100%', height: this.props.fadeSize }, this.props.startFadeStyle]}
                 colors={this.props.fadeColors}
                 pointerEvents={'none'}
             />
@@ -99,14 +99,14 @@ export default class RNFadedScrollView extends Component {
         return (this.props.horizontal ?
             <LinearGradient
                 start={{ x: this.props.isRtl ? 1 : 0, y: 0 }} end={{ x: this.props.isRtl ? 0 : 1, y: 0 }}
-                style={{ position: 'absolute', end: 0, width: this.props.fadeSize, height: '100%' }}
+                style={[{ position: 'absolute', end: 0, width: this.props.fadeSize, height: '100%' }, this.props.endFadeStyle]}
                 colors={this.props.fadeColors}
                 pointerEvents={'none'}
             />
             :
             <LinearGradient
                 start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
-                style={{ position: 'absolute', bottom: 0, width: '100%', height: this.props.fadeSize }}
+                style={[{ position: 'absolute', bottom: 0, width: '100%', height: this.props.fadeSize }, this.props.endFadeStyle]}
                 colors={this.props.fadeColors}
                 pointerEvents={'none'}
             />)

@@ -29,6 +29,10 @@ This library accepts all the props of [ScrollView](https://reactnative.dev/docs/
 | allowDivider          | Allow divider at fade end.      | false    | Boolean.  |
 | isRtl          | For RTL Layouts      | false    | Boolean.  |
 
+### Styling
+For styling pass these props.
+
+`startFadeStyle`, `endFadeStyle` and `dividerStyle`.
 
 ### Events
 | Name                      | Callback param                              | Description     |
