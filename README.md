@@ -32,7 +32,7 @@ This library accepts all the props of [ScrollView](https://reactnative.dev/docs/
 ### Styling
 For styling pass these props.
 
-`startFadeStyle`, `endFadeStyle` and `dividerStyle`.
+`containerStyle`, `startFadeStyle`, `endFadeStyle` and `dividerStyle`.
 
 ### Events
 | Name                      | Callback param                              | Description     |

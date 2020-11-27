@@ -122,7 +122,7 @@ export default class RNFadedScrollView extends Component {
     render() {
         const endFadeEnable = this.isEndFadeAllowed();
         return (
-            <View style={[styles.container, { flexDirection: this.props.horizontal ? "row" : "column" }]}
+            <View style={[styles.container, this.props.containerStyle, { flexDirection: this.props.horizontal ? "row" : "column" }]}
                 onLayout={this._onLayout.bind(this)}>
                 {(this.state.allowStartFade && this.props.allowDivider) && this.getDivider()}
                 <ScrollView
