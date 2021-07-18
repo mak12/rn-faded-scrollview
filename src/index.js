@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, View, Platform } from 'react-native';
 import PropTypes from "prop-types";
 import LinearGradient from "react-native-linear-gradient"
 const defaultFadeColors = ['rgba(229, 229, 229, 0.18)', 'rgba(206, 201, 201, 0.6)', 'rgba(206, 201, 201, 0.9)'];
-export default class RNFadedScrollView extends Component {
+class RNFadedScrollView extends Component {
 
     constructor(props) {
         super(props);
@@ -131,6 +131,7 @@ export default class RNFadedScrollView extends Component {
                 {(this.state.allowStartFade && this.props.allowDivider) && this.getDivider()}
                 <ScrollView
                     {...this.props}
+                    ref={this.props.innerRef}
                     style={[styles.scrollViewStyle, this.props.style]}
                     onContentSizeChange={this.onContentSizeChange}
                     scrollEventThrottle={16}
@@ -175,3 +176,5 @@ RNFadedScrollView.defaultProps = {
     allowDivider: false,
     isRtl: false
 }
+
+export default React.forwardRef((props, ref) => <RNFadedScrollView {...props} innerRef={ref} />);
