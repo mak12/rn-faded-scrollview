@@ -23,7 +23,10 @@ export default class RNFadedScrollView extends Component {
     onContentSizeChange = (contentWidth, contentHeight) => {
         // Save the content height in state
         this.setState({ scrollHeight: contentHeight, scrollWidth: contentWidth });
-        this.props.onContentSizeChange(contentWidth, contentHeight);
+
+        const { onContentSizeChange } = this.props;
+        if (onContentSizeChange)
+            onContentSizeChange(contentWidth, contentHeight);
     };
 
     _onLayout(event) {
