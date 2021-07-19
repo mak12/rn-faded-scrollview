@@ -1,39 +1,26 @@
 {
-  "name": "rn-faded-scrollview",
-  "version": "1.0.10",
-  "description": "A simple and customizable React Native component that allows you to add fade effect in ScrollView at both ends.",
-  "main": "src/index.js",
+  "name": "react-native-fading-scrollview",
+  "version": "1.0.0",
+  "description": "Allowing fade effects on top of react-native ScrollView component",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mak12/rn-faded-scrollview.git"
+    "url": "git+https://github.com/chenop/rn-faded-scrollview.git"
   },
   "keywords": [
-    "react-native",
-    "scrollview",
-    "scrollview faded",
-    "faded scrollview",
-    "fadedscrollview",
-    "faded",
-    "rn-faded-scrollview",
-    "fade",
-    "effects"
+    "\"scrollview\"",
+    "\"scrollview",
+    "fade\""
   ],
-  "author": "Malik Abdul Kawee",
-  "license": "MIT",
+  "author": "Chen Oppenhaim",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mak12/rn-faded-scrollview/issues"
+    "url": "https://github.com/chenop/rn-faded-scrollview/issues"
   },
-  "homepage": "https://github.com/mak12/rn-faded-scrollview#readme",
-  "peerDependencies": {
-    "react": "16.11.0",
-    "react-native": "0.62.2",
-    "react-native-linear-gradient": "^2.x.x"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "metro-react-native-babel-preset": "^0.59.0"
-  }
+  "homepage": "https://github.com/chenop/rn-faded-scrollview#readme"
 }
