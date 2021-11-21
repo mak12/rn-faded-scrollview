@@ -119,8 +119,8 @@ class RNFadedScrollView extends Component {
         return (this.props.horizontal ? <View
             style={[{ width: 1, height: '100%', backgroundColor: "#E6E6E6" }, this.props.dividerStyle]}
         /> : <View
-                style={[{ width: '100%', height: 1, backgroundColor: "#E6E6E6" }, this.props.dividerStyle]}
-            />)
+            style={[{ width: '100%', height: 1, backgroundColor: "#E6E6E6" }, this.props.dividerStyle]}
+        />)
     }
 
     render() {
@@ -165,7 +165,8 @@ RNFadedScrollView.propTypes = {
     isCloseToStart: PropTypes.func,
     scrollThreshold: PropTypes.number,
     allowDivider: PropTypes.bool,
-    isRtl: PropTypes.bool
+    isRtl: PropTypes.bool,
+    onContentSizeChange: PropTypes.func
 }
 RNFadedScrollView.defaultProps = {
     allowStartFade: false,
