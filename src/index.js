@@ -8,7 +8,7 @@ class RNFadedScrollView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // We don't know the size of the content initially, and the probably won't instantly try to scroll, 
+            // We don't know the size of the content initially, and the probably won't instantly try to scroll,
             // so set the initial content height and width to 0
             scrollHeight: 0,
             scrollWidth: 0,
@@ -23,6 +23,10 @@ class RNFadedScrollView extends Component {
     onContentSizeChange = (contentWidth, contentHeight) => {
         // Save the content height in state
         this.setState({ scrollHeight: contentHeight, scrollWidth: contentWidth });
+
+        const { onContentSizeChange } = this.props;
+        if (onContentSizeChange)
+            onContentSizeChange(contentWidth, contentHeight);
     };
 
     _onLayout(event) {
