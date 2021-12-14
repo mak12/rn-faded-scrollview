@@ -77,7 +77,7 @@ class RNFadedScrollView extends Component {
             }
         }
         if (this.props.onScroll) {
-            this.props.onScroll();
+            this.props.onScroll(e);
         }
     }
 
