@@ -40,3 +40,4 @@ For styling pass these props.
 |---------------------------|------------------------------------------|-------------|
 | isCloseToEnd               | Boolean  | if scroll is close to end or not.           |
 | isCloseToStart               | Boolean      | if scroll is close to start or not.   |
+
