@@ -134,7 +134,7 @@ class RNFadedScrollView extends Component {
                     ref={this.props.innerRef}
                     style={[styles.scrollViewStyle, this.props.style]}
                     onContentSizeChange={this.onContentSizeChange}
-                    scrollEventThrottle={16}
+                    scrollEventThrottle={this.props.scrollEventThrottle}
                     onScroll={this.onScrolled}
                 >
                     {this.props.children}
@@ -166,7 +166,8 @@ RNFadedScrollView.propTypes = {
     scrollThreshold: PropTypes.number,
     allowDivider: PropTypes.bool,
     isRtl: PropTypes.bool,
-    onContentSizeChange: PropTypes.func
+    onContentSizeChange: PropTypes.func,
+    scrollEventThrottle: PropTypes.number
 }
 RNFadedScrollView.defaultProps = {
     allowStartFade: false,
@@ -175,7 +176,8 @@ RNFadedScrollView.defaultProps = {
     fadeColors: defaultFadeColors,
     scrollThreshold: 10,
     allowDivider: false,
-    isRtl: false
+    isRtl: false,
+    scrollEventThrottle: 16
 }
 
 export default React.forwardRef((props, ref) => <RNFadedScrollView {...props} innerRef={ref} />)

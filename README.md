@@ -5,6 +5,9 @@ Vertical Scroll             |  Horizontal Scroll
 :-------------------------:|:-------------------------:
 ![](assets/vertical.gif) | ![](assets/horizontal.gif)
 
+# Sponsor
+<a href="https://www.buymeacoffee.com/malikkawee" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 ## Installation
 This library relies on [react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient). Follow setup instructions of linear gradient.
 
@@ -26,6 +29,7 @@ This library accepts all the props of [ScrollView](https://reactnative.dev/docs/
 | fadeSize | Fade size i.e( width incase of horizontal and height incase of vertical ScrollView) | 20     | Number  |
 | fadeColors          | Colors for fade effect        | ['rgba(229, 229, 229, 0.18)', 'rgba(206, 201, 201, 0.6)', 'rgba(206, 201, 201, 0.9)']     | Array  |
 | scrollThreshold          | Threshold to control fade hide/show when it reaches start or end        | 10     | Number  |
+| scrollEventThrottle          | This controls how often the scroll event will be fired while scrolling (as a time interval in ms)        | 16     | Number  |
 | allowDivider          | Allow divider at fade end.      | false    | Boolean  |
 | isRtl          | For RTL Layouts      | false    | Boolean  |
 | onContentSizeChange          | onContentSizeChange call back added, function will return contentWidth and contentHeight      |     | Function  |
