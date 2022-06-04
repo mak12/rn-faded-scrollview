@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/mak12/rn-faded-scrollview#readme",
   "peerDependencies": {
-    "react": "16.11.0",
-    "react-native": "0.62.2",
+    "react": "*",
+    "react-native": ">=0.62.2",
     "react-native-linear-gradient": "^2.x.x"
   },
   "dependencies": {},
