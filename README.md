@@ -19,6 +19,30 @@ OR
 
 `yarn add rn-faded-scrollview` 
 
+## Simple
+
+```javascript
+import RNFadedScrollView from 'rn-faded-scrollview';
+
+// Within your render function
+<RNFadedScrollView
+        allowStartFade={true}
+        horizontal={false}
+        fadeSize={10}
+        style={styles.backgroundStyle}
+        bounces={false}
+      >
+   //other views      
+</RNFadedScrollView>
+
+// Later on in your styles..
+var styles = StyleSheet.create({
+  backgroundStyle: {
+    flex: 1
+  }
+});
+```
+
 ## Documentation
 This library accepts all the props of [ScrollView](https://reactnative.dev/docs/scrollview) and some additional props.
 ### Props
